@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
-final appTheme = ThemeData(
-  colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueAccent),
-  useMaterial3: true,
-);
+ThemeData theme(Brightness brightness) {
+  final colors = ColorScheme.fromSeed(
+    seedColor: Colors.blueAccent,
+    brightness: brightness,
+  );
+  return ThemeData(
+    brightness: brightness,
+    colorScheme: colors,
+    scaffoldBackgroundColor: colors.surface,
+    useMaterial3: true,
+  );
+}
