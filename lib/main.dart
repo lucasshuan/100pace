@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
               ),
               Tab(
                   icon: Icon(Icons.play_arrow),
-                  text: 'Tracker'
+                  text: 'Track'
               ),
               Tab(
                   icon: Icon(Icons.history),

@@ -14,15 +14,15 @@ class MyHistory extends StatelessWidget {
             Expanded(
               child: ListView.builder(
                 reverse: true,
-                itemCount: tracker.records.length,
+                itemCount: tracker.tracks.length,
                 itemBuilder: (context, index) {
-                  var record = tracker.records[index];
+                  var track = tracker.tracks[index];
                   return ListTile(
                     title: Text('Walk number ${index+1}'),
-                    subtitle: Text('Duration: ${record.duration.inMinutes}:${record.duration.inSeconds.toString().padLeft(2, '0')}'),
+                    subtitle: Text('Duration: ${track.duration.inMinutes}:${track.duration.inSeconds.toString().padLeft(2, '0')}'),
                     trailing: Icon(
-                      record.isCompleted ? Icons.check : Icons.close,
-                      color: record.isCompleted ? Colors.green : Colors.red
+                      track.isCompleted ? Icons.check : Icons.close,
+                      color: track.isCompleted ? Colors.green : Colors.red
                     ),
                   );
                 },

@@ -3,20 +3,18 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 @immutable
-class Record {
+class Track {
   final Duration duration;
   final Duration targetDuration;
   final DateTime createdAt = DateTime.now();
 
   bool get isCompleted => duration >= targetDuration;
 
-  Record(seconds, targetSeconds) :
-    duration = Duration(seconds: seconds),
-    targetDuration = Duration(seconds: targetSeconds);
+  Track(this.duration, this.targetDuration);
 }
 
 class Tracker extends ChangeNotifier {
-  List<Record> records = [];
+  List<Track> tracks = [];
 
   Timer? _timer;
 
@@ -47,8 +45,11 @@ class Tracker extends ChangeNotifier {
   }
 
   void stop() {
-    var record = Record(_currentSeconds, _targetSeconds);
-    records.add(record);
+    var track = Track(
+        Duration(seconds: _currentSeconds),
+        Duration(seconds: _targetSeconds),
+    );
+    tracks.add(track);
     _timer?.cancel();
     _currentSeconds = 0;
     notifyListeners();
